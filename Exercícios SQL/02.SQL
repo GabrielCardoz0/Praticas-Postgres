@@ -1,5 +1,1 @@
-SELECT testimonials.id, users.name AS "writerId", users.name AS "recipientId", testimonials.message FROM testimonials JOIN users ON testimonials."writerId" = users.id;
-
---  INNER JOIN users ON testimonials."recipientId" = users.id
-
---  JOIN users ON testimonials."recipientId" = users.id
+SELECT testimonials.id, t1.name AS "writedId", t2.name AS "recipientId", testimonials.message FROM testimonials INNER JOIN users AS "t1" ON (testimonials."writerId" = t1.id) INNER JOIN users AS "t2" ON (testimonials."recipientId" = t2.id);
