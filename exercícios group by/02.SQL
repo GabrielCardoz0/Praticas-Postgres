@@ -1,1 +1,1 @@
-SELECT "userId" as id, COUNT("userId") as exp FROM educations GROUP BY "userId";
+SELECT "userId" as id, COUNT("userId") as "experiences" FROM educations GROUP BY "userId";
