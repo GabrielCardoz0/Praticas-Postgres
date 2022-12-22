@@ -1,0 +1,28 @@
+CREATE DATABASE "flight_agency";
+
+CREATE TABLE "company"(
+    id SERIAL PRIMARY KEY NOT NULL,
+    name TEXT UNIQUE NOT NULL,
+    sigla TEXT UNIQUE NOT NULL,
+);
+
+CREATE TABLE "airports"(
+    id SERIAL PRIMARY KEY NOT NULL,
+    name TEXT UNIQUE NOT NULL,
+    sigla TEXT UNIQUE NOT NULL
+);
+
+CREATE TABLE "flights" (
+    id SERIAL PRIMARY KEY NOT NULL,
+    sigla TEXT UNIQUE NOT NULL,
+    "airportOutId" INTEGER NOT NULL REFERENCES "airports"(id),
+    "airportInId" INTEGER NOT NULL REFERENCES "airports"(id),
+    "timeOut" TIMESTAMP WITHOUT TIME ZONE NOT NULL,
+    "timeIn" TIMESTAMP WITHOUT TIME ZONE NOT NULL
+);
+
+CREATE TABLE "company_flights"(
+    id SERIAL PRIMARY KEY NOT NULL,
+    company_id INTEGER NOT NULL REFERENCES "company"(id),
+    flight_id INTEGER NOT NULL REFERENCES "flights"(id)
+);
